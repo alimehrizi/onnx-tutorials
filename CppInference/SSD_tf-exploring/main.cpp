@@ -1,8 +1,10 @@
 // https://github.com/microsoft/onnxruntime/blob/rel-1.6.0/csharp/test/Microsoft.ML.OnnxRuntime.EndToEndTests.Capi/CXX_Api_Sample.cpp
 // https://github.com/microsoft/onnxruntime/blob/rel-1.6.0/include/onnxruntime/core/session/onnxruntime_cxx_api.h
-#include <cuda_provider_factory.h>
+
 #include<cpu_provider_factory.h>
 #include <onnxruntime_cxx_api.h>
+#include <onnxruntime_c_api.h>
+#include <onnxruntime_session_options_config_keys.h>
 
 
 #include <opencv2/dnn/dnn.hpp>
@@ -20,7 +22,6 @@
 #include <numeric>
 #include <string>
 #include <vector>
-#include"cuda_utils.h"
 #include "extra_utils.h"
 
 #define CUDA_POST true
@@ -128,42 +129,6 @@ void postProcessCpu(float *result,std::vector<int64_t> outputDims, std::vector<s
         }
     }
 
-}
-
-void postProcessCuda(float *result,std::vector<int64_t> outputDims, std::vector<std::vector<cv::Rect2f>> &final_bboxes, std::vector<std::vector<float>> &final_scores, std::vector<std::vector<int>> &final_classes, float conf_thresh, float iou_thresh, std::vector<float> pad_info){
-    final_bboxes.clear();
-    final_classes.clear();
-    final_scores.clear();
-    float *nms_result = (float*)malloc(outputDims[0]*NUM_DET_ATTR*MAX_DET_NMS*sizeof(float));
-    cudaNMS(result,outputDims[0],outputDims[1],outputDims[2],nms_result);
-    for(int b=0;b<outputDims[0];b++){
-        final_bboxes[b].clear();
-        final_classes[b].clear();
-        final_scores[b].clear();
-        int offset = b*MAX_DET_NMS*NUM_DET_ATTR;
-        for(int i=offset;i<offset+MAX_DET_NMS*NUM_DET_ATTR;i+=NUM_DET_ATTR){
-            float conf = nms_result[i+4];
-            if(conf<0.3)
-                continue;
-            cv::Rect2f box;
-            box = cv::Rect2f(cv::Point(nms_result[i+0], nms_result[i+1]),
-                                cv::Point(nms_result[i+2], nms_result[i+3]));
-            box.y -= pad_info[2];
-            box.x -= pad_info[1];
-            box.x /= pad_info[0];
-            box.y /= pad_info[0];
-            box.width /= pad_info[0];
-            box.height /= pad_info[0];
-            box.y = (box.y + box.height/2)/pad_info[4];
-            box.x = (box.x + box.width/2)/pad_info[3];
-            box.height /= pad_info[4];
-            box.width /= pad_info[3];
-            final_scores[b].push_back(conf);
-            final_classes[b].push_back(nms_result[i+5]);
-            final_bboxes[b].push_back(box);
-            //std::cout<<"conf="<<conf<<" ,class="<<nms_result[i+5]<<" ,box="<<box<<std::endl;
-        }
-    }
 }
 
 template <typename T>
@@ -280,46 +245,18 @@ std::vector<std::string> readLabels(std::string& labelFilepath)
 
 int main(int argc, char* argv[])
 {
-    bool useCUDA{true};
-    const char* useCUDAFlag = "--use_cuda";
-    const char* useCPUFlag = "--use_cpu";
-    if (argc == 1)
-    {
-        useCUDA = false;
-    }
-    else if ((argc == 2) && (strcmp(argv[1], useCUDAFlag) == 0))
-    {
-        useCUDA = true;
-    }
-    else if ((argc == 2) && (strcmp(argv[1], useCPUFlag) == 0))
-    {
-        useCUDA = false;
-    }
-    else if ((argc == 2) && (strcmp(argv[1], useCUDAFlag) != 0))
-    {
-        useCUDA = false;
-    }
-    else
-    {
-        throw std::runtime_error{"Too many arguments."};
-    }
 
-    if (useCUDA)
-    {
-        std::cout << "Inference Execution Provider: CUDA" << std::endl;
-    }
-    else
-    {
-        std::cout << "Inference Execution Provider: CPU" << std::endl;
-    }
+    std::cout << "Inference Execution Provider: CPU" << std::endl;
+
 
     std::string instanceName{"yolov5-inference"};
-    std::string modelFilepath{"/home/altex/Mehrizi/Models/cars_small_320_V4.0/exp2/weights/best.onnx"};
-    std::string imageFolderPath =  "/home/altex/test_images/images";
-    std::string labelFilepath{"/home/altex/fake.txt"};
-    std::string saveResultPath = "/home/altex/test_images/onnx-result";
+    std::string modelFilepath = "/home/altex/Mehrizi/konnect/OCR/1/model.onnx";
+    std::string imageFolderPath =   "/home/altex/Mehrizi/konnect/OCR/Plate";
+    std::string saveResultPath = "/home/altex/Mehrizi/konnect/OCR/onnx-result_opset12";
+    std::string labelFilepath{"/home/altex/fake.txt"};;
+    float score_threshold = 0.3;
 
-    std::vector<std::string> labels{readLabels(labelFilepath)};
+    create_directory(saveResultPath);
 
     // https://github.com/microsoft/onnxruntime/blob/rel-1.6.0/include/onnxruntime/core/session/onnxruntime_c_api.h#L123
     Ort::Env env(OrtLoggingLevel::ORT_LOGGING_LEVEL_WARNING,
@@ -329,24 +266,18 @@ int main(int argc, char* argv[])
 
 
 
-    if (useCUDA)
-    {
-        // Using CUDA backend
-        // https://github.com/microsoft/onnxruntime/blob/rel-1.6.0/include/onnxruntime/core/providers/cuda/cuda_provider_factory.h#L13
-        OrtStatus* status =
-            OrtSessionOptionsAppendExecutionProvider_CUDA(sessionOptions, 0);
-    }else
-    {
-        bool enable_cpu_mem_arena = true;
-        Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU(sessionOptions, enable_cpu_mem_arena));
-        sessionOptions.SetIntraOpNumThreads(8); // controls the number of threads to use to run the model
-        sessionOptions.SetExecutionMode(ExecutionMode::ORT_SEQUENTIAL);//controls whether the operators in the graph run sequentially or in parallel. Usually when a model has many branches, setting this option to false will provide better performance.
-        /*
-         *When sess_options.execution_mode = rt.ExecutionMode.ORT_PARALLEL,
-         *  you can set sess_options.inter_op_num_threads to control the number of threads used to parallelize the execution of the graph (across nodes).
-         */
 
-    }
+    bool enable_cpu_mem_arena = true;
+    Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CPU(sessionOptions, enable_cpu_mem_arena));
+//    sessionOptions.SetExecutionMode(ExecutionMode::ORT_SEQUENTIAL);//controls whether the operators in the graph run sequentially or in parallel. Usually when a model has many branches, setting this option to false will provide better performance.
+//    sessionOptions.SetIntraOpNumThreads(4); // number of threads used to parallelize the execution within nodes
+//    sessionOptions.SetInterOpNumThreads(2); //number of threads used to parallelize the execution of the graph (across nodes).
+    /*
+     *When sess_options.execution_mode = rt.ExecutionMode.ORT_PARALLEL,
+     *  you can set sess_options.inter_op_num_threads to control the number of threads used to parallelize the execution of the graph (across nodes).
+     */
+
+
 
     // Sets graph optimization level
     // Available levels are
@@ -380,48 +311,34 @@ int main(int argc, char* argv[])
     std::vector<int64_t> inputDims = inputTensorInfo.GetShape();
     std::cout << "Input Dimensions: " << inputDims << std::endl;
 
-    const char* outputName = session.GetOutputName(0, allocator);
-    std::cout << "Output Name: " << outputName << std::endl;
 
-    Ort::TypeInfo outputTypeInfo = session.GetOutputTypeInfo(0);
-    auto outputTensorInfo = outputTypeInfo.GetTensorTypeAndShapeInfo();
 
-    ONNXTensorElementDataType outputType = outputTensorInfo.GetElementType();
-    std::cout << "Output Type: " << outputType << std::endl;
-
-    std::vector<int64_t> outputDims = outputTensorInfo.GetShape();
-    std::cout << "Output Dimensions: " << outputDims << std::endl;
-    size_t inputTensorSize = vectorProduct(inputDims);
-    size_t outputTensorSize = vectorProduct(outputDims);
-//    assert(("Output tensor size should equal to the label set size.",
-//            labels.size() == outputTensorSize));
-    //std::vector<float> outputTensorValues(outputTensorSize);
-
-    float *outputTensorValues;
-    if(useCUDA & CUDA_POST){
-        HANDLE_ERROR(cudaMalloc((void**)&outputTensorValues,int(outputTensorSize)*sizeof(float)));
-    }else{
-        outputTensorValues = (float*)malloc(outputTensorSize*sizeof(float));
-
-    }
     std::vector<const char*> inputNames{inputName};
-    std::vector<const char*> outputNames{outputName};
-
-
-    float *input_data = (float*)malloc(vectorProduct(inputDims)*sizeof(float));
-
+    std::vector<const char*> outputNames;
     std::vector<Ort::Value> inputTensors;
-    std::vector<Ort::Value> outputTensors;
+    std::vector<std::vector<int64_t>> outputDims;
+
 
     Ort::MemoryInfo memoryInfo = Ort::MemoryInfo::CreateCpu(
         OrtAllocatorType::OrtArenaAllocator, OrtMemType::OrtMemTypeDefault);
-    inputTensors.push_back(Ort::Value::CreateTensor<float>(
-        memoryInfo, input_data, inputTensorSize, inputDims.data(),
-        inputDims.size()));
-    outputTensors.push_back(Ort::Value::CreateTensor<float>(
-        memoryInfo, outputTensorValues, outputTensorSize,
-        outputDims.data(), outputDims.size()));
 
+
+
+    for(int n=0;n<numOutputNodes;n++){
+        const char* outputName = session.GetOutputName(n, allocator);
+        std::cout << "Output Name: " << outputName << std::endl;
+        outputNames.push_back(outputName);
+        Ort::TypeInfo outputTypeInfo = session.GetOutputTypeInfo(n);
+        auto outputTensorInfo = outputTypeInfo.GetTensorTypeAndShapeInfo();
+
+        ONNXTensorElementDataType outputType = outputTensorInfo.GetElementType();
+        std::cout << "Output Type: " << outputType << std::endl;
+
+        std::vector<int64_t> outputDim = outputTensorInfo.GetShape();
+        std::cout << "Output Dimensions: " << outputDim << std::endl;
+        outputDims.push_back(outputDim);
+
+    }
     std::vector<std::vector<cv::Rect2f>> bboxes;
     std::vector<std::vector<float>> scores;
     std::vector<std::vector<int>> classes;
@@ -429,9 +346,8 @@ int main(int argc, char* argv[])
 
     std::vector<cv::Mat> images;
     std::vector<std::string> names;
-    std::vector<float> pad_info;
-    float t_p=0;
-    Timer timer;
+    float t_p=0, t_all;
+    Timer timer, timer2;
     int n_images=0;
     for (auto & entry : boost::filesystem::directory_iterator(imageFolderPath)){
         std::string img_path = entry.path().string();
@@ -441,38 +357,51 @@ int main(int argc, char* argv[])
          names.push_back(img_path);
          images.push_back(img);
          std::cout<<img_path<<std::endl;
+        timer2.Start();
+        cv::Mat imageRGB;
 
-        cv::Mat resizedImageBGR;
-        cv::Mat resizedImage;
-        cv::Mat preprocessedImage;
-        timer.Start();
-        pad_info = preprocess_img(img,resizedImageBGR, inputDims.at(2), inputDims.at(3) );
-        resizedImageBGR.convertTo(resizedImage, CV_32F, 1.0 / 255.0);
+        cv::cvtColor(img,imageRGB,cv::COLOR_BGR2RGB);
 
-        // HWC to CHW
-        cv::dnn::blobFromImage(resizedImage, preprocessedImage);
+        std::vector<int64_t> inputDims = {1,imageRGB.size().height,imageRGB.size().width,3};
+        auto inputTensorSize = vectorProduct(inputDims);
+        inputTensors.clear();
+        inputTensors.push_back(Ort::Value::CreateTensor<uint8_t>(
+            memoryInfo, img.data, inputTensorSize, inputDims.data(),
+            inputDims.size()));
+         timer.Start();
+        auto outputTensors = session.Run(Ort::RunOptions{nullptr}, inputNames.data(),
+                            inputTensors.data(), 1, outputNames.data(), outputNames.size());
+         t_p += timer.TimeSpent();
 
-        memcpy(input_data, preprocessedImage.data,vectorProduct(inputDims)*sizeof(float));
-        // https://github.com/microsoft/onnxruntime/blob/rel-1.6.0/include/onnxruntime/core/session/onnxruntime_cxx_api.h#L353
-
-        cudaDeviceSynchronize();
-        session.Run(Ort::RunOptions{nullptr}, inputNames.data(),
-                    inputTensors.data(), 1, outputNames.data(),
-                    outputTensors.data(), 1);
-
-        std::vector<std::vector<cv::Rect2f>> final_bboxes(outputDims[0]);
-        std::vector<std::vector<float>> final_scores(outputDims[0]);
-        std::vector<std::vector<int>> final_classes(outputDims[0]);
-        if(useCUDA & CUDA_POST){
-            postProcessCuda(outputTensorValues,outputDims,final_bboxes, final_scores,final_classes,CONF_THR,IOU_THR, pad_info);
-        }else{
-            postProcessCpu(outputTensorValues,outputDims,final_bboxes, final_scores,final_classes,CONF_THR,IOU_THR, pad_info);
+         std::vector<cv::Rect2f> bboxes_b;
+         std::vector<float> scores_b;
+         std::vector<int> classes_b;
+        int num_detections = outputTensors[3].GetTensorData<float>()[0];
+        for(int i=0;i<num_detections;i++){
+            auto data = &outputTensors[0].GetTensorData<float>()[4*i];
+            int cls = outputTensors[1].GetTensorData<float>()[i];
+            float score = outputTensors[2].GetTensorData<float>()[i];
+            if(score<score_threshold)
+                continue;
+            auto s = imageRGB.size();
+            int xmin = data[1]*s.width;
+            int xmax = data[3]*s.width;
+            int ymin = data[0]*s.height;
+            int ymax = data[2]*s.height;
+            cv::Rect2d box(xmin,ymin,xmax-xmin,ymax-ymin);
+            bboxes_b.push_back(cv::Rect2f(data[1],data[0],data[3]-data[1],data[2]-data[0]));
+            classes_b.push_back(cls);
+            scores_b.push_back(score);
+            cv::rectangle(img,box,cv::Scalar(255),1);
         }
-        cudaDeviceSynchronize();
-        t_p += timer.TimeSpent();
-        bboxes.push_back(final_bboxes[0]);
-        scores.push_back(final_scores[0]);
-        classes.push_back(final_classes[0]);
+        cv::imwrite(saveResultPath+"/"+ std::to_string(n_images)+".jpg",img);
+        t_all += timer2.TimeSpent();
+//        cv::imshow("result",img);
+//        cv::waitKey(0);
+
+        bboxes.push_back(bboxes_b);
+        scores.push_back(scores_b);
+        classes.push_back(classes_b);
         n_images++;
 
 
@@ -480,23 +409,7 @@ int main(int argc, char* argv[])
 
 
     }
-
-
-    std::cout<<"graph average running time = "<<t_p/names.size()<< "ms "<<std::endl;
-
-    for(int b=0;b<bboxes.size();b++){
-        std::ofstream result_file;
-        std::string image_name = split(split(names[b],"/").back(),".")[0];
-        std::string result_path = saveResultPath + "/"+image_name+".txt";
-        //std::cout<<result_path<<std::endl;
-        result_file.open(result_path,std::ios::out);
-
-        for(int i=0;i<bboxes[b].size();i++){
-            auto box = bboxes[b][i];
-            result_file<<box.x<<" "<<box.y<<" "<<box.width<<" "<<box.height<<" "<<scores[b][i]<<" "<<classes[b][i]<<"\n";
-        }
-        result_file.close();
-    }
+    std::cout<<"avg time = "<<t_all/n_images<<" ,avg graph time = "<<t_p/n_images<<std::endl;
 
 //    for(int b=0;b<images.size();b++){
 //        auto image_size = images[b].size();
