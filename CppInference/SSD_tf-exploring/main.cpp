@@ -250,9 +250,9 @@ int main(int argc, char* argv[])
 
 
     std::string instanceName{"yolov5-inference"};
-    std::string modelFilepath = "/home/altex/Mehrizi/konnect/OCR/1/model.onnx";
-    std::string imageFolderPath =   "/home/altex/Mehrizi/konnect/OCR/Plate";
-    std::string saveResultPath = "/home/altex/Mehrizi/konnect/OCR/onnx-result_opset12";
+    std::string modelFilepath = "/home/altex/Mehrizi/konnect/tf_models/CarDetection-200x320.onnx";
+    std::string imageFolderPath =   "/home/altex/test_images/images";
+    std::string saveResultPath = "/home/altex/tfCar-result";
     std::string labelFilepath{"/home/altex/fake.txt"};;
     float score_threshold = 0.3;
 
@@ -396,8 +396,8 @@ int main(int argc, char* argv[])
         }
         cv::imwrite(saveResultPath+"/"+ std::to_string(n_images)+".jpg",img);
         t_all += timer2.TimeSpent();
-//        cv::imshow("result",img);
-//        cv::waitKey(0);
+        cv::imshow("result",img);
+        cv::waitKey(0);
 
         bboxes.push_back(bboxes_b);
         scores.push_back(scores_b);

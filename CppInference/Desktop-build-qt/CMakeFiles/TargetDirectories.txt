@@ -1,0 +1,3 @@
+/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/rebuild_cache.dir
+/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/onnx-detector.dir
+/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/edit_cache.dir

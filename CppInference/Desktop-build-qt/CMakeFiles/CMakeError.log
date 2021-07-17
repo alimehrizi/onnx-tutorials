@@ -1,0 +1,220 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fe30d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fe30d.dir/build.make CMakeFiles/cmTC_fe30d.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe30d.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -fPIC    -o CMakeFiles/cmTC_fe30d.dir/CheckSymbolExists.c.o   -c /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_fe30d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe30d.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC     -rdynamic CMakeFiles/cmTC_fe30d.dir/CheckSymbolExists.c.o  -o cmTC_fe30d 
+CMakeFiles/cmTC_fe30d.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_fe30d.dir/build.make:97: recipe for target 'cmTC_fe30d' failed
+make[1]: *** [cmTC_fe30d] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_fe30d/fast' failed
+make: *** [cmTC_fe30d/fast] Error 2
+
+File /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d2903/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d2903.dir/build.make CMakeFiles/cmTC_d2903.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d2903.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d2903.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d2903
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2903.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_d2903.dir/CheckFunctionExists.c.o  -o cmTC_d2903 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_d2903.dir/build.make:97: recipe for target 'cmTC_d2903' failed
+make[1]: *** [cmTC_d2903] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d2903/fast' failed
+make: *** [cmTC_d2903/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_77224/fast"
+/usr/bin/make -f CMakeFiles/cmTC_77224.dir/build.make CMakeFiles/cmTC_77224.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_77224.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -fPIC    -o CMakeFiles/cmTC_77224.dir/CheckSymbolExists.c.o   -c /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_77224
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77224.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC     -rdynamic CMakeFiles/cmTC_77224.dir/CheckSymbolExists.c.o  -o cmTC_77224 
+CMakeFiles/cmTC_77224.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_77224.dir/build.make:97: recipe for target 'cmTC_77224' failed
+make[1]: *** [cmTC_77224] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_77224/fast' failed
+make: *** [cmTC_77224/fast] Error 2
+
+File /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f7f40/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f7f40.dir/build.make CMakeFiles/cmTC_f7f40.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f7f40.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_f7f40.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f7f40
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7f40.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_f7f40.dir/CheckFunctionExists.c.o  -o cmTC_f7f40 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_f7f40.dir/build.make:97: recipe for target 'cmTC_f7f40' failed
+make[1]: *** [cmTC_f7f40] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_f7f40/fast' failed
+make: *** [cmTC_f7f40/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_84d29/fast"
+/usr/bin/make -f CMakeFiles/cmTC_84d29.dir/build.make CMakeFiles/cmTC_84d29.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_84d29.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -fPIC    -o CMakeFiles/cmTC_84d29.dir/CheckSymbolExists.c.o   -c /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_84d29
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84d29.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC     -rdynamic CMakeFiles/cmTC_84d29.dir/CheckSymbolExists.c.o  -o cmTC_84d29 
+CMakeFiles/cmTC_84d29.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_84d29.dir/build.make:97: recipe for target 'cmTC_84d29' failed
+make[1]: *** [cmTC_84d29] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_84d29/fast' failed
+make: *** [cmTC_84d29/fast] Error 2
+
+File /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_71198/fast"
+/usr/bin/make -f CMakeFiles/cmTC_71198.dir/build.make CMakeFiles/cmTC_71198.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_71198.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_71198.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_71198
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71198.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_71198.dir/CheckFunctionExists.c.o  -o cmTC_71198 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_71198.dir/build.make:97: recipe for target 'cmTC_71198' failed
+make[1]: *** [cmTC_71198] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_71198/fast' failed
+make: *** [cmTC_71198/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d7c3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9d7c3.dir/build.make CMakeFiles/cmTC_9d7c3.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d7c3.dir/CheckSymbolExists.c.o
+/usr/bin/gcc   -fPIC    -o CMakeFiles/cmTC_9d7c3.dir/CheckSymbolExists.c.o   -c /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_9d7c3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d7c3.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC     -rdynamic CMakeFiles/cmTC_9d7c3.dir/CheckSymbolExists.c.o  -o cmTC_9d7c3 
+CMakeFiles/cmTC_9d7c3.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_9d7c3.dir/build.make:97: recipe for target 'cmTC_9d7c3' failed
+make[1]: *** [cmTC_9d7c3] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9d7c3/fast' failed
+make: *** [cmTC_9d7c3/fast] Error 2
+
+File /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0cd77/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0cd77.dir/build.make CMakeFiles/cmTC_0cd77.dir/build
+make[1]: Entering directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0cd77.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_0cd77.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0cd77
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0cd77.dir/link.txt --verbose=1
+/usr/bin/gcc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_0cd77.dir/CheckFunctionExists.c.o  -o cmTC_0cd77 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_0cd77.dir/build.make:97: recipe for target 'cmTC_0cd77' failed
+make[1]: *** [cmTC_0cd77] Error 1
+make[1]: Leaving directory '/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_0cd77/fast' failed
+make: *** [cmTC_0cd77/fast] Error 2
+
+
