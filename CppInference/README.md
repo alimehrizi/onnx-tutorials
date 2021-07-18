@@ -32,6 +32,23 @@ python -m tf2onnx.convert
 ```
 
 
+## ssd-cpu 
+* complete implementation of ssd object detector 
+* runs only on cpu  
+
+## ssd-gpu 
+* complete implementaion of ssd object detector 
+* cpu and gpu 
+* not complete yet
+
+## yolov5-exploring 
+* test yolov5 pytorch on cpu and gpu with cuda NMS (only works with v4.0)
+
+## yolov5-complete 
+* yolov5 pytorch on cpu and gpu 
+* not complete 
+
+
 
 ## References
 [1] TensorFlow detection [**model zoo**](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md).  
