@@ -22,13 +22,7 @@ python -m tf2onnx.convert
 ```
 or from **frozen_inference_graph.pb**
 ```
-python -m tf2onnx.convert 
-  --opset 11 
-  --fold_const 
-  --graphdef ssd_mobilenet_v1_coco_2018_01_28/frozen_inference_graph.pb 
-  --output ssd_mobilenet_v1_coco_2018_01_28/frozen.onnx 
-  --inputs image_tensor:0 
-  --outputs detection_boxes:0,detection_classes:0,detection_scores:0,num_detections:0
+python3 -m tf2onnx.convert --opset 12  --graphdef CarDetection-200x320  --outputs detection_boxes:0,detection_classes:0,detection_scores:0,num_detections:0 --inputs image_tensor:0 --output CarDetection-200x320.onnx    
 ```
 
 
