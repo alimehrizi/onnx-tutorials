@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu
+CMAKE_SOURCE_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt
@@ -57,66 +57,18 @@ include CMakeFiles/onnx-detector.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/onnx-detector.dir/flags.make
 
-CMakeFiles/onnx-detector.dir/detector.cpp.o: CMakeFiles/onnx-detector.dir/flags.make
-CMakeFiles/onnx-detector.dir/detector.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/onnx-detector.dir/detector.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/detector.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.cpp
-
-CMakeFiles/onnx-detector.dir/detector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onnx-detector.dir/detector.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.cpp > CMakeFiles/onnx-detector.dir/detector.cpp.i
-
-CMakeFiles/onnx-detector.dir/detector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onnx-detector.dir/detector.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.cpp -o CMakeFiles/onnx-detector.dir/detector.cpp.s
-
-CMakeFiles/onnx-detector.dir/detector.cpp.o.requires:
-
-.PHONY : CMakeFiles/onnx-detector.dir/detector.cpp.o.requires
-
-CMakeFiles/onnx-detector.dir/detector.cpp.o.provides: CMakeFiles/onnx-detector.dir/detector.cpp.o.requires
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/detector.cpp.o.provides.build
-.PHONY : CMakeFiles/onnx-detector.dir/detector.cpp.o.provides
-
-CMakeFiles/onnx-detector.dir/detector.cpp.o.provides.build: CMakeFiles/onnx-detector.dir/detector.cpp.o
-
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.o: CMakeFiles/onnx-detector.dir/flags.make
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/onnx-detector.dir/extra_utils.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/extra_utils.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.cpp
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onnx-detector.dir/extra_utils.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.cpp > CMakeFiles/onnx-detector.dir/extra_utils.cpp.i
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onnx-detector.dir/extra_utils.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.cpp -o CMakeFiles/onnx-detector.dir/extra_utils.cpp.s
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires:
-
-.PHONY : CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides.build
-.PHONY : CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides
-
-CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides.build: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o
-
-
 CMakeFiles/onnx-detector.dir/main.cpp.o: CMakeFiles/onnx-detector.dir/flags.make
-CMakeFiles/onnx-detector.dir/main.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/onnx-detector.dir/main.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/main.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/main.cpp
+CMakeFiles/onnx-detector.dir/main.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/onnx-detector.dir/main.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/main.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/main.cpp
 
 CMakeFiles/onnx-detector.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onnx-detector.dir/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/main.cpp > CMakeFiles/onnx-detector.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/main.cpp > CMakeFiles/onnx-detector.dir/main.cpp.i
 
 CMakeFiles/onnx-detector.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onnx-detector.dir/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/main.cpp -o CMakeFiles/onnx-detector.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/main.cpp -o CMakeFiles/onnx-detector.dir/main.cpp.s
 
 CMakeFiles/onnx-detector.dir/main.cpp.o.requires:
 
@@ -129,44 +81,40 @@ CMakeFiles/onnx-detector.dir/main.cpp.o.provides: CMakeFiles/onnx-detector.dir/m
 CMakeFiles/onnx-detector.dir/main.cpp.o.provides.build: CMakeFiles/onnx-detector.dir/main.cpp.o
 
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.o: CMakeFiles/onnx-detector.dir/flags.make
-CMakeFiles/onnx-detector.dir/visualizer.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/onnx-detector.dir/visualizer.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/visualizer.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.cpp
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.o: CMakeFiles/onnx-detector.dir/flags.make
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.o: /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/onnx-detector.dir/extra_utils.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/onnx-detector.dir/extra_utils.cpp.o -c /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.cpp
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onnx-detector.dir/visualizer.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.cpp > CMakeFiles/onnx-detector.dir/visualizer.cpp.i
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onnx-detector.dir/extra_utils.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.cpp > CMakeFiles/onnx-detector.dir/extra_utils.cpp.i
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onnx-detector.dir/visualizer.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.cpp -o CMakeFiles/onnx-detector.dir/visualizer.cpp.s
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onnx-detector.dir/extra_utils.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.cpp -o CMakeFiles/onnx-detector.dir/extra_utils.cpp.s
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.o.requires:
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires:
 
-.PHONY : CMakeFiles/onnx-detector.dir/visualizer.cpp.o.requires
+.PHONY : CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.o.provides: CMakeFiles/onnx-detector.dir/visualizer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/visualizer.cpp.o.provides.build
-.PHONY : CMakeFiles/onnx-detector.dir/visualizer.cpp.o.provides
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
+	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides.build
+.PHONY : CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides
 
-CMakeFiles/onnx-detector.dir/visualizer.cpp.o.provides.build: CMakeFiles/onnx-detector.dir/visualizer.cpp.o
+CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.provides.build: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o
 
 
 # Object files for target onnx-detector
 onnx__detector_OBJECTS = \
-"CMakeFiles/onnx-detector.dir/detector.cpp.o" \
-"CMakeFiles/onnx-detector.dir/extra_utils.cpp.o" \
 "CMakeFiles/onnx-detector.dir/main.cpp.o" \
-"CMakeFiles/onnx-detector.dir/visualizer.cpp.o"
+"CMakeFiles/onnx-detector.dir/extra_utils.cpp.o"
 
 # External object files for target onnx-detector
 onnx__detector_EXTERNAL_OBJECTS =
 
-onnx-detector: CMakeFiles/onnx-detector.dir/detector.cpp.o
-onnx-detector: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o
 onnx-detector: CMakeFiles/onnx-detector.dir/main.cpp.o
-onnx-detector: CMakeFiles/onnx-detector.dir/visualizer.cpp.o
+onnx-detector: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o
 onnx-detector: CMakeFiles/onnx-detector.dir/build.make
 onnx-detector: /home/altex/ONNX-LIBS/cuda/1.7/runtimes/linux-x64/native/libonnxruntime.so
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_gapi.so.4.5.0
@@ -210,6 +158,7 @@ onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_xobjdetect.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_xphoto.so.4.5.0
 onnx-detector: /usr/lib/x86_64-linux-gnu/libboost_system.so
 onnx-detector: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+onnx-detector: libcuda_kernels.so
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_highgui.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_shape.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_datasets.so.4.5.0
@@ -238,8 +187,12 @@ onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_imgproc.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_cudaarithm.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_core.so.4.5.0
 onnx-detector: /home/altex/OPENCV-4.5.0/lib/libopencv_cudev.so.4.5.0
+onnx-detector: /usr/local/cuda/lib64/libcudart_static.a
+onnx-detector: /usr/lib/x86_64-linux-gnu/librt.so
+onnx-detector: /usr/local/cuda/lib64/libcudart_static.a
+onnx-detector: /usr/lib/x86_64-linux-gnu/librt.so
 onnx-detector: CMakeFiles/onnx-detector.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable onnx-detector"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable onnx-detector"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/onnx-detector.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -247,10 +200,8 @@ CMakeFiles/onnx-detector.dir/build: onnx-detector
 
 .PHONY : CMakeFiles/onnx-detector.dir/build
 
-CMakeFiles/onnx-detector.dir/requires: CMakeFiles/onnx-detector.dir/detector.cpp.o.requires
-CMakeFiles/onnx-detector.dir/requires: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
 CMakeFiles/onnx-detector.dir/requires: CMakeFiles/onnx-detector.dir/main.cpp.o.requires
-CMakeFiles/onnx-detector.dir/requires: CMakeFiles/onnx-detector.dir/visualizer.cpp.o.requires
+CMakeFiles/onnx-detector.dir/requires: CMakeFiles/onnx-detector.dir/extra_utils.cpp.o.requires
 
 .PHONY : CMakeFiles/onnx-detector.dir/requires
 
@@ -259,6 +210,6 @@ CMakeFiles/onnx-detector.dir/clean:
 .PHONY : CMakeFiles/onnx-detector.dir/clean
 
 CMakeFiles/onnx-detector.dir/depend:
-	cd /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/onnx-detector.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/onnx-detector.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/onnx-detector.dir/depend
 

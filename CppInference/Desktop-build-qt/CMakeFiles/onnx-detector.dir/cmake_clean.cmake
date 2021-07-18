@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/onnx-detector.dir/detector.cpp.o"
-  "CMakeFiles/onnx-detector.dir/extra_utils.cpp.o"
   "CMakeFiles/onnx-detector.dir/main.cpp.o"
-  "CMakeFiles/onnx-detector.dir/visualizer.cpp.o"
+  "CMakeFiles/onnx-detector.dir/extra_utils.cpp.o"
   "onnx-detector.pdb"
   "onnx-detector"
 )

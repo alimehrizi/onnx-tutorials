@@ -27,6 +27,68 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cuda_kernels">
+				<Option output="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/libcuda_kernels.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-11.0/include"/>
+					<Add directory="/home/altex/ONNX-LIBS/cuda/1.7/build/native/include"/>
+					<Add directory="/usr/local/cuda/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 cuda_kernels"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cuda_kernels/fast">
+				<Option output="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/libcuda_kernels.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/cuda-11.0/include"/>
+					<Add directory="/home/altex/ONNX-LIBS/cuda/1.7/build/native/include"/>
+					<Add directory="/usr/local/cuda/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 cuda_kernels/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="onnx-detector">
 				<Option output="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/onnx-detector" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt"/>
@@ -34,7 +96,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/cuda-11.0/include"/>
 					<Add directory="/home/altex/ONNX-LIBS/cuda/1.7/build/native/include"/>
+					<Add directory="/usr/local/cuda/include"/>
 					<Add directory="/home/altex/OPENCV-4.5.0/include/opencv4"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
@@ -59,7 +123,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/cuda-11.0/include"/>
 					<Add directory="/home/altex/ONNX-LIBS/cuda/1.7/build/native/include"/>
+					<Add directory="/usr/local/cuda/include"/>
 					<Add directory="/home/altex/OPENCV-4.5.0/include/opencv4"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
@@ -77,51 +143,38 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 		</Build>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.cpp">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt/CMakeFiles/cuda_kernels.dir/cuda_kernels_generated_cuda_kernels.cu.o">
+			<Option target="cuda_kernels"/>
+		</Unit>
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/cuda_kernels.cu">
+			<Option target="cuda_kernels"/>
+		</Unit>
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/cuda_utils.h">
+			<Option target="cuda_kernels"/>
+		</Unit>
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/detector.h">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/extra_utils.h">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.cpp">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/main.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/extra_utils.h">
-			<Option target="onnx-detector"/>
-		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/main.cpp">
-			<Option target="onnx-detector"/>
-		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.cpp">
-			<Option target="onnx-detector"/>
-		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/visualizer.h">
-			<Option target="onnx-detector"/>
-		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/CMakeLists.txt">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig-version.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig.cmake">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules-release.cmake">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules-release.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules.cmake">
+		<Unit filename="/home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring/../../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
 	</Project>

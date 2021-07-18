@@ -48,7 +48,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/ssd-gpu
+CMAKE_SOURCE_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/YoloV5-exploring
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/altex/Mehrizi/onnx-tutorials/CppInference/Desktop-build-qt
@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named cuda_kernels
+
+# Build rule for target.
+cuda_kernels: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cuda_kernels
+.PHONY : cuda_kernels
+
+# fast build rule for target.
+cuda_kernels/fast:
+	$(MAKE) -f CMakeFiles/cuda_kernels.dir/build.make CMakeFiles/cuda_kernels.dir/build
+.PHONY : cuda_kernels/fast
+
+#=============================================================================
 # Target rules for targets named onnx-detector
 
 # Build rule for target.
@@ -122,33 +135,6 @@ onnx-detector: cmake_check_build_system
 onnx-detector/fast:
 	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/build
 .PHONY : onnx-detector/fast
-
-detector.o: detector.cpp.o
-
-.PHONY : detector.o
-
-# target to build an object file
-detector.cpp.o:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/detector.cpp.o
-.PHONY : detector.cpp.o
-
-detector.i: detector.cpp.i
-
-.PHONY : detector.i
-
-# target to preprocess a source file
-detector.cpp.i:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/detector.cpp.i
-.PHONY : detector.cpp.i
-
-detector.s: detector.cpp.s
-
-.PHONY : detector.s
-
-# target to generate assembly for a file
-detector.cpp.s:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/detector.cpp.s
-.PHONY : detector.cpp.s
 
 extra_utils.o: extra_utils.cpp.o
 
@@ -204,33 +190,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-visualizer.o: visualizer.cpp.o
-
-.PHONY : visualizer.o
-
-# target to build an object file
-visualizer.cpp.o:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/visualizer.cpp.o
-.PHONY : visualizer.cpp.o
-
-visualizer.i: visualizer.cpp.i
-
-.PHONY : visualizer.i
-
-# target to preprocess a source file
-visualizer.cpp.i:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/visualizer.cpp.i
-.PHONY : visualizer.cpp.i
-
-visualizer.s: visualizer.cpp.s
-
-.PHONY : visualizer.s
-
-# target to generate assembly for a file
-visualizer.cpp.s:
-	$(MAKE) -f CMakeFiles/onnx-detector.dir/build.make CMakeFiles/onnx-detector.dir/visualizer.cpp.s
-.PHONY : visualizer.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,20 +197,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... onnx-detector"
 	@echo "... edit_cache"
-	@echo "... detector.o"
-	@echo "... detector.i"
-	@echo "... detector.s"
+	@echo "... cuda_kernels"
+	@echo "... onnx-detector"
 	@echo "... extra_utils.o"
 	@echo "... extra_utils.i"
 	@echo "... extra_utils.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... visualizer.o"
-	@echo "... visualizer.i"
-	@echo "... visualizer.s"
 .PHONY : help
 
 

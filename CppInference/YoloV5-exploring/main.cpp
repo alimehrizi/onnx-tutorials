@@ -23,7 +23,7 @@
 #include"cuda_utils.h"
 #include "extra_utils.h"
 
-#define CUDA_POST true
+#define CUDA_POST false
 
 std::vector<std::string> split(std::string s,std::string delimiter = ">="){
 
@@ -314,7 +314,7 @@ int main(int argc, char* argv[])
     }
 
     std::string instanceName{"yolov5-inference"};
-    std::string modelFilepath{"/home/altex/Mehrizi/Models/cars_small_320_V4.0/exp2/weights/best.onnx"};
+    std::string modelFilepath{"/home/altex/Mehrizi/Models/TODv1.0-320s/exp/weights/best.onnx"};
     std::string imageFolderPath =  "/home/altex/test_images/images";
     std::string labelFilepath{"/home/altex/fake.txt"};
     std::string saveResultPath = "/home/altex/test_images/onnx-result";
@@ -379,6 +379,20 @@ int main(int argc, char* argv[])
 
     std::vector<int64_t> inputDims = inputTensorInfo.GetShape();
     std::cout << "Input Dimensions: " << inputDims << std::endl;
+
+    for(int i=0;i<numOutputNodes;i++){
+        const char* outputName = session.GetOutputName(i, allocator);
+        std::cout << "Output Name: " << outputName << std::endl;
+
+        Ort::TypeInfo outputTypeInfo = session.GetOutputTypeInfo(i);
+        auto outputTensorInfo = outputTypeInfo.GetTensorTypeAndShapeInfo();
+
+        ONNXTensorElementDataType outputType = outputTensorInfo.GetElementType();
+        std::cout << "Output Type: " << outputType << std::endl;
+
+        std::vector<int64_t> outputDims = outputTensorInfo.GetShape();
+        std::cout << "Output Dimensions: " << outputDims << std::endl;
+    }
 
     const char* outputName = session.GetOutputName(0, allocator);
     std::cout << "Output Name: " << outputName << std::endl;
@@ -474,6 +488,16 @@ int main(int argc, char* argv[])
         scores.push_back(final_scores[0]);
         classes.push_back(final_classes[0]);
         n_images++;
+        for(int i=0;i<final_bboxes[0].size();i++){
+           auto box = final_bboxes[0][i];
+           box.x = (box.x - box.width/2)*img.size().width;
+           box.y = (box.y - box.height/2)*img.size().height;
+           box.width *= img.size().width;
+           box.height *= img.size().height;
+           cv::rectangle(img, box,cv::Scalar(255),2);
+        }
+        cv::imshow("result", img);
+        cv::waitKey(0);
 
 
 
