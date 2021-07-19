@@ -1,0 +1,3 @@
+/home/altex/onnx-tutorials/CppInference/build/CMakeFiles/rebuild_cache.dir
+/home/altex/onnx-tutorials/CppInference/build/CMakeFiles/onnx-detector.dir
+/home/altex/onnx-tutorials/CppInference/build/CMakeFiles/edit_cache.dir

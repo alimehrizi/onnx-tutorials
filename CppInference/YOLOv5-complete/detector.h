@@ -30,7 +30,7 @@ struct Detection
     float time;
     cv::Rect2f bbox;
     int classID;
-    int Probability;
+    float Probability;
 };
 
 class Detector

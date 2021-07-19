@@ -27,7 +27,7 @@ std::vector<std::string> split(std::string s,std::string delimiter = ">="){
 int main()
 {
     cout << "opencv version: "<< CV_VERSION <<endl;
-    std::string graph_path = "/home/altex/Mehrizi/Models/TODv1.0-320s/exp/weights/best.onnx";
+    std::string graph_path = "/home/altex/Models/COCO-yolov5s-640/exp/weights/best.onnx";
     std::string imageFolderPath =   "/home/altex/test_images/images";
     std::string saveResultPath = "/home/altex/onnxCar-result";
     create_directory(saveResultPath);
@@ -64,10 +64,10 @@ int main()
         auto H = img.size().height;
         for(auto p:pred){
             auto box = p.bbox;
-            box.x *= W;
-            box.y *= H;
-            box.width *= W;
-            box.height *= H;
+//            box.x *= W;
+//            box.y *= H;
+//            box.width *= W;
+//            box.height *= H;
             cv::rectangle(img,box,cv::Scalar(255),1);
         }
         cv::imshow("result", img);

@@ -52,7 +52,7 @@ int Detector::init(const std::string& modelFilepath)
 {
 
 
-    std::string instanceName{"ssd-inference"};
+    std::string instanceName{"yolo-inference"};
     env = new Ort::Env(OrtLoggingLevel::ORT_LOGGING_LEVEL_WARNING,
                  instanceName.c_str());
     Ort::SessionOptions sessionOptions;
@@ -97,6 +97,7 @@ int Detector::init(const std::string& modelFilepath)
     numOutputNodes = 1;
     for(int n=0;n<numOutputNodes;n++){
         const char* outputName = session->GetOutputName(n, allocator);
+        std::cout<<outputName<<std::endl;
 
         outputNames.push_back(outputName);
         Ort::TypeInfo outputTypeInfo = session->GetOutputTypeInfo(n);
@@ -133,7 +134,7 @@ std::vector<Detection> Detector::Forward(cv::Mat &img)
     cv::Mat resizedImageBGR;
     cv::Mat resizedImage;
     cv::Mat preprocessedImage;
-    std::vector<int64_t> inputDim = {1,3, 256, 256};
+    std::vector<int64_t> inputDim = {1,3, 640, 640};
     auto pad_info = LetterboxImage(img,resizedImageBGR, cv::Size(inputDim.at(2), inputDim.at(3)) );
     resizedImageBGR.convertTo(resizedImage, CV_32F, 1.0 / 255.0);
 
@@ -203,11 +204,12 @@ std::vector<Detection> Detector::postProcessCpu(const float *result,std::vector<
         std::vector<cv::Rect> bboxes;
         std::vector<cv::Rect> bboxes_offsets;
         int num_classes = outputDims[2] - 5;
-        int offset = b*outputDims[1]*outputDims[2];
-        for(int i=offset;i<offset+outputDims[1]*outputDims[2];i+=outputDims[2]){
+        for(int i=0;i<outputDims[1]*outputDims[2];i+=outputDims[2]){
             float conf = result[i+4];
+
             if(conf<conf_thresh)
                 continue;
+//            std::cout<<conf<<std::endl;
             cv::Rect2f box;
             box.x = result[i] - result[i+2]/2;
             box.y = result[i+1] - result[i+3]/2;
@@ -223,22 +225,22 @@ std::vector<Detection> Detector::postProcessCpu(const float *result,std::vector<
             offset_box.x += cls * 2000;
             bboxes_offsets.push_back(offset_box);
 
+
         }
 
         std::vector<int> nms_indices;
         cv::dnn::NMSBoxes(bboxes_offsets, scores, conf_thresh, iou_thresh, nms_indices);
+        float scale = pad_info[2];
+        int pad_w = pad_info[4];
+        int pad_h = pad_info[5];
+
         for(int idx:nms_indices){
             cv::Rect2f box = bboxes[idx];
-            box.y -= pad_info[2];
-            box.x -= pad_info[1];
-            box.x /= pad_info[0];
-            box.y /= pad_info[0];
-            box.width /= pad_info[0];
-            box.height /= pad_info[0];
-            box.y = (box.y + box.height/2)/pad_info[4];
-            box.x = (box.x + box.width/2)/pad_info[3];
-            box.height /= pad_info[4];
-            box.width /= pad_info[3];
+            box.x = (box.x-pad_w)/ scale;
+            box.y = (box.y - pad_h)/scale;
+            box.width /= scale;
+            box.height /= scale;
+
             Detection det;
             det.bbox = box;
             det.classID = classes[idx];

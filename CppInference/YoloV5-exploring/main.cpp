@@ -314,7 +314,7 @@ int main(int argc, char* argv[])
     }
 
     std::string instanceName{"yolov5-inference"};
-    std::string modelFilepath{"/home/altex/Mehrizi/Models/TODv1.0-320s/exp/weights/best.onnx"};
+    std::string modelFilepath{"/home/altex/Models/COCO-yolov5s-640/exp/weights/best.onnx"};
     std::string imageFolderPath =  "/home/altex/test_images/images";
     std::string labelFilepath{"/home/altex/fake.txt"};
     std::string saveResultPath = "/home/altex/test_images/onnx-result";
@@ -326,7 +326,7 @@ int main(int argc, char* argv[])
                  instanceName.c_str());
     Ort::SessionOptions sessionOptions;
 
-
+    useCUDA = false;
 
 
     if (useCUDA)
