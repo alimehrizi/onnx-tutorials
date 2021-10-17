@@ -1,4 +1,4 @@
-# Install script for directory: /home/altex/onnx-tutorials/CppInference/YOLOv5-complete
+# Install script for directory: /home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

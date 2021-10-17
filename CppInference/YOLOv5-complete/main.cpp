@@ -27,13 +27,13 @@ std::vector<std::string> split(std::string s,std::string delimiter = ">="){
 int main()
 {
     cout << "opencv version: "<< CV_VERSION <<endl;
-    std::string graph_path = "/home/altex/Models/COCO-yolov5s-640/exp/weights/best.onnx";
-    std::string imageFolderPath =   "/home/altex/test_images/images";
+    std::string graph_path = "/home/altex/Models-custome1/TODv1.1-yolov5s-800-multiScale/exp/weights/best.onnx";
+    std::string imageFolderPath =   "/home/altex/test_images/images2";
     std::string saveResultPath = "/home/altex/onnxCar-result";
     create_directory(saveResultPath);
 
     Detector detector(0.1);
-    detector.init(graph_path);
+    detector.init(graph_path,true);
     int nF = 0;
     Visualizer box_visualizer;
     //////////
@@ -49,7 +49,7 @@ int main()
     int n_images=0;
     for (auto & entry : boost::filesystem::directory_iterator(imageFolderPath)){
         std::string img_path = entry.path().string();
-        //if(n_images>300)break;
+        if(n_images>300)break;
         auto img = cv::imread(img_path);
         if(img.empty())continue;
          names.push_back(img_path);
@@ -68,10 +68,10 @@ int main()
 //            box.y *= H;
 //            box.width *= W;
 //            box.height *= H;
-            cv::rectangle(img,box,cv::Scalar(255),1);
+//            cv::rectangle(img,box,cv::Scalar(255),1);
         }
-        cv::imshow("result", img);
-        cv::waitKey(0);
+//        cv::imshow("result", img);
+//        cv::waitKey(0);
         results.push_back(pred);
         n_images++;
 

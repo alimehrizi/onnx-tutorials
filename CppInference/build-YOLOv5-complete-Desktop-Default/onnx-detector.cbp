@@ -88,40 +88,40 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/detector.cpp">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/detector.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/detector.h">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/detector.h">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/extra_utils.cpp">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/extra_utils.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/extra_utils.h">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/extra_utils.h">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/main.cpp">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/main.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/visualizer.cpp">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/visualizer.cpp">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/visualizer.h">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/visualizer.h">
 			<Option target="onnx-detector"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/CMakeLists.txt">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig-version.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig.cmake">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules-release.cmake">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules-release.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
-		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules.cmake">
+		<Unit filename="/home/altex/onnx-tutorials/CppInference/YOLOv5-complete-batchMode/../../../OPENCV-4.5.0/lib/cmake/opencv4/OpenCVModules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\OPENCV-4.5.0\lib\cmake\opencv4\"/>
 		</Unit>
 	</Project>

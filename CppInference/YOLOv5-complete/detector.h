@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include<cpu_provider_factory.h>
-
+#include <cuda_provider_factory.h>
 #include <onnxruntime_cxx_api.h>
 #include <onnxruntime_c_api.h>
 #include <onnxruntime_session_options_config_keys.h>
@@ -40,13 +40,14 @@ public:
     std::vector<Detection> Forward(cv::Mat &img);
     void SetThreshold(float thresh);
     float GetThreshold();
-    int init(const std::string& modelFilepath);
+    int init(const std::string& modelFilepath, bool cuda);
 private:
     std::vector<Detection> postProcessCpu(const float *result, std::vector<int64_t> outputDims, float conf_thresh, float iou_thresh, std::vector<float> pad_info);
     std::vector<float> LetterboxImage(const cv::Mat& src, cv::Mat& dst, const cv::Size& new_size);
     float threshold = 0.5;
     Ort::Session *session;
     Ort::Env *env;
+    bool useGpu;
     std::vector<const char*> inputNames;
     std::vector<const char*> outputNames;
     std::vector<Ort::Value> inputTensors;

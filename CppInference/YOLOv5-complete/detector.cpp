@@ -48,8 +48,9 @@ Detector::Detector(float DetectionThreshold)
 
 // Reads a model graph definition from disk, and creates a session object you
 // can use to run it.
-int Detector::init(const std::string& modelFilepath)
+int Detector::init(const std::string& modelFilepath,bool cuda)
 {
+    useGpu = cuda;
 
 
     std::string instanceName{"yolo-inference"};
@@ -57,10 +58,10 @@ int Detector::init(const std::string& modelFilepath)
                  instanceName.c_str());
     Ort::SessionOptions sessionOptions;
 
-    bool CUDA = false;
 
-    if(CUDA){
-        CUDA = false;
+
+    if(useGpu){
+        Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CUDA(sessionOptions, 0));
     }else{
 
         bool enable_cpu_mem_arena = true;
